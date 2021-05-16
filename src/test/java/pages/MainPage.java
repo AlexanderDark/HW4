@@ -1,8 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Optional;
 
@@ -30,6 +32,11 @@ public class MainPage extends BasePage{
     public void fillAuthForm () {
         String login = System.getProperty("login");
         String password = System.getProperty("password");
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(loginField));
+        } catch (TimeoutException exception) {
+            logger.info("Поле Логин не кликабельно!!!");
+        }
         driver.findElement(loginField).sendKeys(login);
         logger.info("Введён логин "+ login);
         driver.findElement(passwordField).sendKeys(password);

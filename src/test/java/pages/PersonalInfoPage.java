@@ -1,10 +1,11 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PersonalInfoPage extends BasePage{
@@ -32,8 +33,7 @@ public class PersonalInfoPage extends BasePage{
     private final By addContactButton = By.cssSelector("button[class*='js-lk-cv-custom-select-add']");
     private final By contactVkButton = By.xpath("//p[contains(text(), 'Контактная информация')]/..//div[contains(@class, 'js-formset-items')]/div[2]//button[@title='VK']");
     private final By contactVkInput = By.cssSelector("input[name='contact-1-value']");
-
-
+    private final By contactDelete = By.xpath("//div[@class='lk-cv-block__input-alignment']/button[contains(text(), 'Удалить')]");
     private final By saveButton = By.cssSelector("[title=\"Сохранить и заполнить позже\"]");
 
 
@@ -185,6 +185,33 @@ public class PersonalInfoPage extends BasePage{
 
     public String getContactVkValue() {
         return driver.findElement(contactVkInput).getAttribute("value");
+    }
+
+    public void deleteContacts () {
+        logger.info("Началась работа deleteInfo");
+
+
+
+        for (int i = 0; i<driver.findElements(contactDelete).size(); i++) {
+            logger.info("Цикл фор "+i);
+            if (isClickable(driver.findElements(contactDelete).get(i))) {
+                logger.info("Элемент кликабл "+i);
+                driver.findElements(contactDelete).get(i).click();
+                i--;
+            }
+        }
+        System.out.println("dashdgadasgdasgd");
+    }
+
+    public boolean isClickable(WebElement webElement)
+    {
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
     }
 
 }

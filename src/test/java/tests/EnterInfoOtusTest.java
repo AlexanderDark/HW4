@@ -1,18 +1,11 @@
 package tests;
 
-import driver.WebDriverFactory;
-import driver.WebDriverType;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 import pages.MainPage;
 import pages.PersonalInfoPage;
 
 public class EnterInfoOtusTest extends BaseTest {
-    public static WebDriverFactory factory;
-    private final Logger logger = LogManager.getLogger(EnterInfoOtusTest.class);
 
 
     @Test
