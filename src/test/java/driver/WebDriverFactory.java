@@ -11,13 +11,15 @@ public class WebDriverFactory {
 
     public static WebDriver createDriver (WebDriverType webDriverType) {
         switch (webDriverType) {
-            case CHROME:
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
-                break;
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
+                break;
+            case CHROME:
+
+            case DEFAULT:
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
                 break;
         }
         return driver;
