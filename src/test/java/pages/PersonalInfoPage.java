@@ -187,20 +187,16 @@ public class PersonalInfoPage extends BasePage{
         return driver.findElement(contactVkInput).getAttribute("value");
     }
 
+    //мутод удаляет контакты со страницы персональных данных
     public void deleteContacts () {
-        logger.info("Началась работа deleteInfo");
-
-
-
+        logger.info("Началось удаление контактов");
         for (int i = 0; i<driver.findElements(contactDelete).size(); i++) {
-            logger.info("Цикл фор "+i);
             if (isClickable(driver.findElements(contactDelete).get(i))) {
-                logger.info("Элемент кликабл "+i);
                 driver.findElements(contactDelete).get(i).click();
                 i--;
             }
         }
-        System.out.println("dashdgadasgdasgd");
+        logger.info("Удаление контактов окончилось успешно");
     }
 
     public boolean isClickable(WebElement webElement)

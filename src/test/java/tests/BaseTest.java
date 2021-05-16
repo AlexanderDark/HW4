@@ -34,7 +34,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 5);
 
-
+// Перед тестами будет происходить удаление контактов, если они существуют
         MainPage mainPage = new MainPage(driver);
         PersonalInfoPage persInfoPage = new PersonalInfoPage(driver);
         mainPage.openOtus();
@@ -48,9 +48,9 @@ public class BaseTest {
     }
     @AfterEach
     public void closeWebDriver () {
-        /*if (driver != null) {
+        if (driver != null) {
             driver.quit();
-        }*/
+        }
         logger.info("Браузер закрыт");
     }
 }
